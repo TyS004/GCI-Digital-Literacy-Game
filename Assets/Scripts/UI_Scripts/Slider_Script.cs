@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
 
@@ -10,7 +11,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     public float sliderAnimationStopCoordinate;
     private float sliderAnimationStartCoordinate;
     
-    private bool isOpen = false;
+    private bool isShown = false;
     private bool isMoving = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,10 +20,9 @@ public class NewMonoBehaviourScript : MonoBehaviour
         sliderAnimationStartCoordinate = sliderPrefab.transform.position.x;
     }
 
-    // Update is called once per frame
-    void Update()
+    /* Update is called once per frame
+    public void OnSliderClickOld()
     {
-        print(isMoving + ", " + isOpen);
         if (isMoving)
         {
             if (isOpen && sliderPrefab.transform.position.x > sliderAnimationStopCoordinate)
@@ -35,8 +35,35 @@ public class NewMonoBehaviourScript : MonoBehaviour
             }
         }
     }
+*/
 
-    public void OnClick()
+    public void OnSliderClick()
+    {
+        if (!isMoving)
+            StartCoroutine(MoveSlider());
+    }
+
+    IEnumerator MoveSlider()
+    {
+        isMoving = true;
+        float duration = 0.6f;
+        float distance = 340f;
+        float elapsed = 0f;
+        Vector3 startPos = sliderPrefab.transform.position;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+            sliderPrefab.transform.position = startPos + Vector3.left * (t * distance);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        sliderPrefab.transform.position = startPos + Vector3.left * distance;
+        isMoving = false;
+    }
+
+   /* public void OnClick()
     {
         print("Button Clicked" + sliderPrefab.transform.position);
 
@@ -50,7 +77,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
         {
             isOpen = false;
         }
-    }
+    }*/
 }
 
 
