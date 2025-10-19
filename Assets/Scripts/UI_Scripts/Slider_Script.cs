@@ -46,8 +46,20 @@ public class NewMonoBehaviourScript : MonoBehaviour
     IEnumerator MoveSlider()
     {
         isMoving = true;
-        float duration = 0.6f;
-        float distance = 340f;
+        float distance;
+
+        if (isShown)
+        { 
+            isShown = false;
+            distance = -385f;
+        }
+        else
+        {
+            isShown = true;
+            distance = 385f;
+        }
+        
+        float duration = 0.4f;
         float elapsed = 0f;
         Vector3 startPos = sliderPrefab.transform.position;
 
