@@ -19,7 +19,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // does this work?
     void Start()
     {
-        sliderAnimationStartCoordinate = sliderPrefab.transform.position.x;
+        //sliderAnimationStartCoordinate = sliderPrefab.transform.position.x;
     }
 
     /* Update is called once per frame
