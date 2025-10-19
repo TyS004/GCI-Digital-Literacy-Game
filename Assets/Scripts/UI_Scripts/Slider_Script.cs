@@ -17,6 +17,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // testing testing branch
     // does this work?
+    // wills branch push test
     void Start()
     {
         //sliderAnimationStartCoordinate = sliderPrefab.transform.position.x;
@@ -41,7 +42,7 @@ public class NewMonoBehaviourScript : MonoBehaviour
 
     public void OnSliderClick()
     {
-        if (!isMoving)
+        if (isMoving == false)
             StartCoroutine(MoveSlider());
     }
 
