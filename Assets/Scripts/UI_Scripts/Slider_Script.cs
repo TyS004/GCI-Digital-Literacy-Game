@@ -13,7 +13,8 @@ public class NewMonoBehaviourScript : MonoBehaviour
     
     private bool isShown = false;
     private bool isMoving = false;
-    
+
+    private int fuckyou = 4;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // testing testing branch
     // does this work?
