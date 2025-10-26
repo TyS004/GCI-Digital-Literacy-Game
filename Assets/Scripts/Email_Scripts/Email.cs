@@ -1,57 +1,28 @@
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class Email : MonoBehaviour
+[System.Serializable]
+public class Email
 {
-    public Text EmailText;
+    private string From;
+    private string Subject;
+    private string Body;
+    private Sprite ProfileImageSprite;
 
-    private List<string> emails;
-    private List<int> emailQueue;
-    private string defaultEmail = "From: someone@email.com\nSubject: Hello\nBody: This is an email body.";
-
-    void Start() 
+    public Email(string from, string subject, string body, Sprite profileImageSprite)
     {
-        Reset();
+        From = from;
+        Subject = subject;
+        Body = body;
+        ProfileImageSprite =  profileImageSprite;
     }
 
-    public void Reset()
+    public string GetFullText()
     {
-        emails = EmailReader.Load(defaultEmail);
-        InitializeRandomEmailQueue();
-        DisplayRandomEmail();
+        return $"From: {From}\nSubject: {Subject}\nBody: {Body}";
     }
 
-    public void TestingButton()
+    public Sprite GetProfileImageSprite()
     {
-        DisplayRandomEmail();
+        return ProfileImageSprite;
     }
-
-    private void DisplayRandomEmail()
-    {
-        if (emailQueue.Count > 0)
-        {
-            int index = emailQueue[0];
-            EmailText.text = emails[index];
-            emailQueue.RemoveAt(0);
-        }
-    }
-
-    private void InitializeRandomEmailQueue()
-    {
-        emailQueue = new List<int>();
-        
-        List<int> indexPool = new List<int>();
-        for (int i = 0; i < emails.Count; i++)
-            indexPool.Add(i);
-
-        for (int i = 0; i < emails.Count; i++)
-        {
-            int randIndex = Random.Range(0, indexPool.Count);
-            emailQueue.Add(indexPool[randIndex]);
-            indexPool.RemoveAt(randIndex);
-        }
-
-    }
-    
 }
