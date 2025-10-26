@@ -6,12 +6,10 @@ public class FileReader : MonoBehaviour
 {
     public ProfileImageManager ProfileImageManager;
 
-    // Path relative to the Unity project
     private string emailsPath;
 
     private void Awake()
     {
-        // Application.dataPath points to the Assets folder
         emailsPath = Path.Combine(Application.dataPath, "Text/Emails/emails.txt");
     }
 
