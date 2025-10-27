@@ -695,7 +695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &330585544
 AudioListener:
   m_ObjectHideFlags: 0
@@ -979,10 +979,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 747288924}
-  - {fileID: 1482540462}
-  m_Father: {fileID: 123289389}
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1002,8 +1000,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   emailCamera: {fileID: 330585543}
-  phoneCamera: {fileID: 1071618373}
-  MenuPanel: {fileID: 1482540461}
+  phoneCamera: {fileID: 0}
+  MenuPanel: {fileID: 0}
 --- !u!114 &335625242
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,7 +1042,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 2071516216}
+  m_TargetGraphic: {fileID: 335625243}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -4078,7 +4076,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!20 &1913411381
 Camera:
   m_ObjectHideFlags: 0
@@ -4985,11 +4983,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 330585545}
-<<<<<<< Updated upstream
-  m_PlaneDistance: 1000
-=======
   m_PlaneDistance: 100
->>>>>>> Stashed changes
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -5101,17 +5095,10 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 330585546}
-<<<<<<< Updated upstream
-  - {fileID: 1071618377}
-=======
   - {fileID: 1913411384}
->>>>>>> Stashed changes
   - {fileID: 410087041}
   - {fileID: 2084091805}
   - {fileID: 1921804760}
-<<<<<<< Updated upstream
-  - {fileID: 123289389}
-=======
   - {fileID: 928949447}
   - {fileID: 1855179049}
->>>>>>> Stashed changes
+  - {fileID: 335625240}
