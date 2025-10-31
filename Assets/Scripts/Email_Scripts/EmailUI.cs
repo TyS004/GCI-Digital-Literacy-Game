@@ -4,32 +4,17 @@ using UnityEngine.UI;
 
 public class EmailUI : MonoBehaviour
 {
-    //public List<Email> Inbox;
     public MainEmail MainEmail;
     
     public List<Text> InboxTexts;
     public List<Image> InboxImages;
-
-    public void ClearMainEmail()
-    {
-        
-    }
-    public void HighlightInboxEmail(int index)
-    {
-        
-    }
-
-    public void UnhighlightInboxEmail(int index)
-    {
-        
-    }
     
     public void HideInboxEmail(int index)
     {
         if (index < InboxTexts.Count && index < InboxImages.Count)
         {
             InboxTexts[index].text = "";
-            InboxImages[index].sprite = null; // optional: use a placeholder sprite
+            InboxImages[index].sprite = null; // default/empty sprite?
         }
     }
     

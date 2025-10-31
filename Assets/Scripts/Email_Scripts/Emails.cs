@@ -25,8 +25,8 @@ public class Emails : MonoBehaviour
 
     public void OnInboxEmailClick(int index)
     {
-        EmailUI.UnhighlightInboxEmail(currentIndex);
-        EmailUI.HighlightInboxEmail(index);
+        if (index >= Inbox.Count)
+            return;
         DisplayEmail(index);
     }
     
@@ -39,30 +39,21 @@ public class Emails : MonoBehaviour
     {
         AcceptOrDeny();
     }
-    
+
     private void AcceptOrDeny()
     {
-        if (Inbox.Count == 0)
-            return;
-
-        Inbox.RemoveAt(currentIndex);
-
-        if (Inbox.Count == 0)
+        if (Inbox.Count < 0)
         {
-            EmailUI.ClearMainEmail();
             return;
         }
+
+        Inbox.RemoveAt(currentIndex);
 
         if (currentIndex >= Inbox.Count)
             currentIndex--;
 
         DisplayEmail(currentIndex);
         EmailUI.UpdateInbox(Inbox);
-    }
-
-    private void UpdateMainEmail()
-    {
-        //MainEmail.Update();
     }
 
     private void DisplayEmail(int index)
@@ -72,7 +63,6 @@ public class Emails : MonoBehaviour
             Email email = Inbox[index];
             EmailUI.DisplayEmail(email);
             currentIndex = index;
-            //Inbox.RemoveAt(index);
         }
     }
 
