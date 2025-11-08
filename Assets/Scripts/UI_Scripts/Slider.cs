@@ -55,5 +55,3 @@ public class Slider : MonoBehaviour
         isMoving = false;
     }
 }
-
-
