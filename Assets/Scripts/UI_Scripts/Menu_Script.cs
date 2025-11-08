@@ -1,9 +1,10 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Menu_Script : MonoBehaviour
 {
-    public GameObject emailCamera;
-    public GameObject phoneCamera;
+    public string emailScene;
+    public string phoneScene;
     public GameObject MenuPanel;
     void Start()
     {
@@ -21,12 +22,10 @@ public class Menu_Script : MonoBehaviour
     }
     public void switchToEmail()
     {
-        emailCamera.SetActive(true);
-        phoneCamera.SetActive(false);
+        if (emailScene != null) SceneManager.LoadScene(emailScene);
     }
     public void switchToPhone()
     {
-        emailCamera.SetActive(false);
-        phoneCamera.SetActive(true);
+        if (emailScene != null) SceneManager.LoadScene(phoneScene);
     }
 }
