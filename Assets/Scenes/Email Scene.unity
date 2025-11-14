@@ -6218,6 +6218,10 @@ PrefabInstance:
       value: switchToPhone
       objectReference: {fileID: 0}
     - target: {fileID: 6931702805670336481, guid: 606d94fa9c58f084d92f02dc5faff83f, type: 3}
+      propertyPath: emailScene
+      value: Email Scene
+      objectReference: {fileID: 0}
+    - target: {fileID: 6931702805670336481, guid: 606d94fa9c58f084d92f02dc5faff83f, type: 3}
       propertyPath: phoneScene
       value: Phone Scene
       objectReference: {fileID: 0}
