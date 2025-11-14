@@ -2,18 +2,18 @@ From: someone@email.com
 Subject: Test
 Body: This is a test email.
 
-From: support@steam.com
+From: support@<d type="domain">steem</d>.com
 Subject: Password Reset
 Body: We received a request to reset your password. If this was you, click the link below to create a new one. Otherwise, ignore this email.
 
-From: sales@homeessentials.com
+From: sales@<d type="domain">homedepto</d>.com
 Subject: Your Order Has Shipped!
-Body: Great news! Your order #47293 has shipped and is on its way. You can track your package using the link below.
+Body: Great news! Your order #<d type="sensitive">47293</d> has shipped and is on its way. You can track your package using the link below.
 
 From: noreply@chapman.edu
 Subject: Course Registration Confirmation
-Body: You have successfully registered for GCI 200. Please review your schedule and contact the registrar if you notice any issues.
+Body: You have successfully registered for <d type="course">GCI 200</d>. Please review your schedule and contact the registrar if you notice any issues.
 
 From: security@bank.net
 Subject: Unusual Login Activity
-Body: We noticed a login from a new device. If this was you, no action is needed. If not, please secure your account immediately.
+Body: We noticed a login from a new device. If this was you, no action is needed. If not, please secure your account immediately. <d type="sensitive">Account alert</d>

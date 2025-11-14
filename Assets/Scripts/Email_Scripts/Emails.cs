@@ -8,7 +8,7 @@ public class Emails : MonoBehaviour
     public EmailUI EmailUI;
     
     private List<Email> Inbox;
-    private int currentIndex;
+    private int CurrentIndex;
 
     public void Start()
     {
@@ -17,9 +17,9 @@ public class Emails : MonoBehaviour
     
     public void Reset()
     {
-        currentIndex = 0;
+        CurrentIndex = 0;
         InitializeRandomInbox();
-        DisplayEmail(currentIndex);
+        DisplayEmail(CurrentIndex);
         EmailUI.UpdateInbox(Inbox);
     }
 
@@ -47,12 +47,12 @@ public class Emails : MonoBehaviour
             return;
         }
 
-        Inbox.RemoveAt(currentIndex);
+        Inbox.RemoveAt(CurrentIndex);
 
-        if (currentIndex >= Inbox.Count)
-            currentIndex--;
+        if (CurrentIndex >= Inbox.Count)
+            CurrentIndex--;
 
-        DisplayEmail(currentIndex);
+        DisplayEmail(CurrentIndex);
         EmailUI.UpdateInbox(Inbox);
     }
 
@@ -62,7 +62,7 @@ public class Emails : MonoBehaviour
         {
             Email email = Inbox[index];
             EmailUI.DisplayEmail(email);
-            currentIndex = index;
+            CurrentIndex = index;
         }
     }
 
