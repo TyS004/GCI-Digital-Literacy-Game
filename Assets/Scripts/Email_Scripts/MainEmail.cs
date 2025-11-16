@@ -121,6 +121,12 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();
     }
+
+    public List<Discrepancy> GetDiscrepancies()
+    {
+        return Discrepancies;
+    }
+    
     private void PrintDiscrepancies()
     {
         if (Discrepancies == null || Discrepancies.Count == 0)
