@@ -78,22 +78,23 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         EmailText.ForceMeshUpdate();
     }
     
-    public List<string> GetHighlightedWord()
+    public string GetHighlightedWord()
     {
-        List<string> words = new List<string>();
-
         if (HighlightedWordIndex != -1)
         {
             TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[HighlightedWordIndex];
-            words.Add(wordInfo.GetWord());
+            return wordInfo.GetWord();
         }
-
-        return words;
+        return "";
     }
     
     public void PrintHighlightedWord()
     {
-        print(GetHighlightedWord());
+        string word = GetHighlightedWord();
+        if (!string.IsNullOrEmpty(word))
+            print(word);
+        else
+            print("No word highlighted");
     }
     
     public void HighlightDiscrepancies()
