@@ -55,12 +55,12 @@ public class NewMonoBehaviourScript : MonoBehaviour
         if (isShown)
         { 
             isShown = false;
-            distance = -385f;
+            distance = -50f;
         }
         else
         {
             isShown = true;
-            distance = 385f;
+            distance = 10f;
         }
         
         float duration = 0.4f;
