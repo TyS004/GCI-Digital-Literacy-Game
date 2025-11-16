@@ -6,7 +6,9 @@ public class Slider : MonoBehaviour
 {
     public GameObject sliderPrefab;
     public Emails Emails;
-    
+
+    public int SliderAnimationDistance;
+
     private bool isShown = false;
     private bool isMoving = false;
     
@@ -34,9 +36,18 @@ public class Slider : MonoBehaviour
     IEnumerator MoveSlider()
     {
         isMoving = true;
-        isShown = !isShown;
-        
-        SliderGameParameters.SliderAnimationDistance *= -1;
+        float distance;
+
+        if (isShown)
+        {
+            isShown = false;
+            distance = -SliderAnimationDistance;
+        }
+        else
+        {
+            isShown = true;
+            distance = SliderAnimationDistance;
+        }
 
         float elapsed = 0f;
         Vector3 startPos = sliderPrefab.transform.position;
@@ -44,14 +55,12 @@ public class Slider : MonoBehaviour
         while (elapsed < SliderGameParameters.SliderAnimationDuration)
         {
             float t = elapsed / SliderGameParameters.SliderAnimationDuration;
-            sliderPrefab.transform.position = startPos + Vector3.right * (t * SliderGameParameters.SliderAnimationDistance);
-
+            sliderPrefab.transform.position = startPos + Vector3.left * (t * distance);
             elapsed += Time.deltaTime;
             yield return null;
         }
 
-        sliderPrefab.transform.position = startPos + Vector3.right * SliderGameParameters.SliderAnimationDistance;
-
+        sliderPrefab.transform.position = startPos + Vector3.left * distance;
         isMoving = false;
     }
 }
