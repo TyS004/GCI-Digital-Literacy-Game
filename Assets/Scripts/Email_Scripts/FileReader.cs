@@ -5,9 +5,12 @@ public class FileReader : MonoBehaviour
 {
     public ProfileImageManager ProfileImageManager;
     private string emailsPath;
+    
     private void Awake()
     {
         emailsPath = Path.Combine(Application.dataPath, "Text/Emails/emails.txt");
+        if (ProfileImageManager == null)
+            ProfileImageManager = FindObjectOfType<ProfileImageManager>();
     }
     public List<Email> Load()
     {
