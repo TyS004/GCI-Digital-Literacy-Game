@@ -1,7 +1,6 @@
 using UnityEngine;
 
-using UnityEngine;
-public class Discrepancy : MonoBehaviour
+public class Discrepancy
 {
     private string Type;
     private string DiscrepancyString;
@@ -16,7 +15,7 @@ public class Discrepancy : MonoBehaviour
         EndIndex = endIndex;
     }
     
-    public string GetType()
+    new public string GetType()
     {
         return Type;
     }

@@ -10,7 +10,7 @@ public class FileReader : MonoBehaviour
     {
         emailsPath = Path.Combine(Application.dataPath, "Text/Emails/emails.txt");
         if (ProfileImageManager == null)
-            ProfileImageManager = FindObjectOfType<ProfileImageManager>();
+            ProfileImageManager = Object.FindFirstObjectByType<ProfileImageManager>();
     }
     public List<Email> Load()
     {
