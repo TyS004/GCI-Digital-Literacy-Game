@@ -79,6 +79,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         }
         return words;
     }
+    
     public void PrintHighlightedWords()
     {
         List<string> words = GetHighlightedWords();
@@ -140,7 +141,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         }
     }
     
-    private string GetHighlightedWord()
+    public string GetHighlightedWord()
     {
         return HighlightedWord;
     }

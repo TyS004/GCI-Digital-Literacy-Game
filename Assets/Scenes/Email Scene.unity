@@ -2652,7 +2652,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 707134569}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 790653313}
+        m_TargetAssemblyTypeName: CheckertextScrpt, Assembly-CSharp
+        m_MethodName: ShowResultGrammer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &707134569
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3195,6 +3207,7 @@ GameObject:
   - component: {fileID: 790653311}
   - component: {fileID: 790653310}
   - component: {fileID: 790653309}
+  - component: {fileID: 790653313}
   m_Layer: 5
   m_Name: Front Page
   m_TagString: Untagged
@@ -3296,6 +3309,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 790653307}
   m_CullTransparentMesh: 1
+--- !u!114 &790653313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 790653307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50220fcf3cd6e5e40b6d09537fb9e8a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CheckertextScrpt
+  MainEmail: {fileID: 1919533910}
 --- !u!114 &801061332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8534305255476530577, guid: eecbc1020dc7a48c0b6a18894709a716, type: 3}
