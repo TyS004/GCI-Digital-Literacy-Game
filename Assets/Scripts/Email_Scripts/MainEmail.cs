@@ -7,6 +7,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text EmailText;
     public Image SenderImage;
+    
     private string OriginalText;
     private int HighlightedWordIndex = -1;
     private string HighlightedWord;
@@ -34,6 +35,11 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         {
             ToggleWord(wordIndex);
         }
+    }
+    
+    public List<Discrepancy> GetDiscrepancies()
+    {
+        return Discrepancies;
     }
     
     private void ToggleWord(int wordIndex)
@@ -78,6 +84,9 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         EmailText.ForceMeshUpdate();
     }
     
+    
+    //----------------------Methods for testing----------------------
+    
     public string GetHighlightedWord()
     {
         if (HighlightedWordIndex != -1)
@@ -98,43 +107,36 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     }
     
     public void HighlightDiscrepancies()
-    { 
-        PrintDiscrepancies();
-        
-        if (Discrepancies == null || Discrepancies.Count == 0)
-        {
-            return;
-        }
+    {
+        if (Discrepancies == null || Discrepancies.Count == 0) return;
+
         string newText = OriginalText;
+        EmailText.text = OriginalText;
         EmailText.ForceMeshUpdate();
         int offset = 0;
+
         for (int i = 0; i < EmailText.textInfo.wordCount; i++)
         {
             TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[i];
-            string word = wordInfo.GetWord();
+
             foreach (Discrepancy d in Discrepancies)
             {
-                if (word == d.GetDiscrepancyString())
+                if (wordInfo.firstCharacterIndex == d.GetStartIndex())
                 {
                     string colorStart = $"<color={EmailParameters.DiscrepancyColor}>";
                     string colorEnd = "</color>";
                     int startIndex = wordInfo.firstCharacterIndex + offset;
-                    int length = wordInfo.characterCount;
                     newText = newText.Insert(startIndex, colorStart);
                     offset += colorStart.Length;
-                    newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
+                    newText = newText.Insert(startIndex + wordInfo.characterCount + colorStart.Length, colorEnd);
                     offset += colorEnd.Length;
                     break;
                 }
             }
         }
+
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();
-    }
-
-    public List<Discrepancy> GetDiscrepancies()
-    {
-        return Discrepancies;
     }
     
     private void PrintDiscrepancies()
