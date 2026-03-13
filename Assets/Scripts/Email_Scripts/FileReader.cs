@@ -1,57 +1,84 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using Object = UnityEngine.Object;
+
 public class FileReader : MonoBehaviour
 {
     public ProfileImageManager ProfileImageManager;
     private string emailsPath;
     
+    private string levelsFolderPath;
+
     private void Awake()
     {
-        emailsPath = Path.Combine(Application.dataPath, "Text/Emails/emails.txt");
+        levelsFolderPath = Path.Combine(Application.dataPath, "Text/Level Emails");
         if (ProfileImageManager == null)
             ProfileImageManager = Object.FindFirstObjectByType<ProfileImageManager>();
     }
-    public List<Email> Load()
+    
+    public List<Level> Load()
     {
-        if (!File.Exists(emailsPath))
+        List<Level> levels = new List<Level>();
+
+        if (!Directory.Exists(levelsFolderPath))
         {
-            Debug.LogError("Emails file not found: " + emailsPath);
-            return new List<Email>();
+            print("Levels folder not found: " + levelsFolderPath);
+            return levels;
         }
-        return ReadEmailsAndImagesFromFile();
+
+        string[] levelFiles = Directory.GetFiles(levelsFolderPath, "level*.txt");
+        System.Array.Sort(levelFiles);
+
+        for (int i = 0; i < levelFiles.Length; i++)
+        {
+            List<Email> emails = ReadEmailsAndImagesFromFile(levelFiles[i]);
+            levels.Add(new Level(i + 1, emails));
+        }
+
+        return levels;
     }
-    private List<Email> ReadEmailsAndImagesFromFile()
+    
+    private List<Email> ReadEmailsAndImagesFromFile(string filePath)
     {
         List<Email> emails = new List<Email>();
-        string[] emailBlocks = File.ReadAllText(emailsPath)
+
+        string[] emailBlocks = File.ReadAllText(filePath)
             .Split(new string[] { "\r\n\r\n", "\n\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+
         foreach (string block in emailBlocks)
         {
             string from = "";
             string subject = "";
             string body = "";
+
             string[] lines = block.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+
             foreach (string line in lines)
             {
                 if (line.StartsWith("From: ")) from = line.Substring(6).Trim();
                 else if (line.StartsWith("Subject: ")) subject = line.Substring(9).Trim();
                 else if (line.StartsWith("Body: ")) body = line.Substring(6).Trim();
             }
+
             List<Discrepancy> fromDiscrepancies = AssignDiscrepancies(ref from);
             List<Discrepancy> subjectDiscrepancies = AssignDiscrepancies(ref subject);
             List<Discrepancy> bodyDiscrepancies = AssignDiscrepancies(ref body);
-            
+
             List<Discrepancy> allDiscrepancies = new List<Discrepancy>();
             allDiscrepancies.AddRange(fromDiscrepancies);
             allDiscrepancies.AddRange(subjectDiscrepancies);
             allDiscrepancies.AddRange(bodyDiscrepancies);
-            
+
             Sprite profileImageSprite = ProfileImageManager.GetProfile(from);
+
             emails.Add(new Email(from, subject, body, profileImageSprite, allDiscrepancies));
         }
+
         return emails;
     }
+    
     private List<Discrepancy> AssignDiscrepancies(ref string text)
     {
         List<Discrepancy> discrepancies = new List<Discrepancy>();

@@ -33,4 +33,19 @@ public class Email
     {
         return Discrepancies;
     }
+
+    public string GetSubject()
+    {
+        return Subject;
+    }
+
+    public string GetFrom()
+    {
+        return From;
+    }
+
+    public string GetBody()
+    {
+        return Body;
+    }
 }
