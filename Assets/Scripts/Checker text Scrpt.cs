@@ -1,3 +1,4 @@
+/*
 using UnityEngine;
 
 public class CheckertextScrpt : MonoBehaviour
@@ -16,6 +17,7 @@ public class CheckertextScrpt : MonoBehaviour
        }
        return false;
    }
+   
 
    public void ShowResultGrammer()
    {
@@ -30,4 +32,4 @@ public class CheckertextScrpt : MonoBehaviour
        }
    }
 }
-
+*/
