@@ -7,24 +7,27 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text EmailText;
     public Image SenderImage;
+    
     private string OriginalText;
-    private HashSet<int> HighlightedWordIndices = new HashSet<int>();
-    private string HighlightedWord; // make so only one word to be clicked
+    private int HighlightedWordIndex = -1;
+    private string HighlightedWord;
     private List<Discrepancy> Discrepancies = new List<Discrepancy>();
     
     public void ChangeMainEmail(Email email)
     {
         EmailText.text = email.GetFullText();
         OriginalText = EmailText.text;
-        HighlightedWordIndices.Clear();
+        HighlightedWordIndex = -1;
         SenderImage.sprite = email.GetProfileImageSprite();
         Discrepancies = email.GetDiscrepancies();
     }
+    
     void Awake()
     {
         if (EmailText == null) EmailText = GetComponent<TMP_Text>();
         OriginalText = EmailText.text;
     }
+    
     public void OnPointerClick(PointerEventData eventData)
     {
         int wordIndex = TMP_TextUtilities.FindIntersectingWord(EmailText, eventData.position, eventData.pressEventCamera);
@@ -33,99 +36,107 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
             ToggleWord(wordIndex);
         }
     }
+    
+    public List<Discrepancy> GetDiscrepancies()
+    {
+        return Discrepancies;
+    }
+    
     private void ToggleWord(int wordIndex)
     {
-        if (HighlightedWordIndices.Contains(wordIndex))
+        if (HighlightedWordIndex == wordIndex)
         {
-            HighlightedWordIndices.Remove(wordIndex);
+            HighlightedWordIndex = -1;
         }
         else
         {
-            HighlightedWordIndices.Add(wordIndex);
+            HighlightedWordIndex = wordIndex;
         }
+
         UpdateHighlightedText();
     }
+    
     private void UpdateHighlightedText()
     {
         EmailText.text = OriginalText;
         EmailText.ForceMeshUpdate();
+
+        if (HighlightedWordIndex == -1) return;
+
         string newText = OriginalText;
         int offset = 0;
-        for (int i = 0; i < EmailText.textInfo.wordCount; i++)
-        {
-            if (!HighlightedWordIndices.Contains(i)) continue;
-            TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[i];
-            int startIndex = wordInfo.firstCharacterIndex + offset;
-            int length = wordInfo.characterCount;
-            
-            string colorStart = $"<color={EmailParameters.HighlightedWordColor}>";
-            string colorEnd = "</color>";
-            // insert color tags into the correct positions
-            newText = newText.Insert(startIndex, colorStart);
-            offset += colorStart.Length;
-            newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
-            offset += colorEnd.Length;
-        }
+
+        TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[HighlightedWordIndex];
+
+        int startIndex = wordInfo.firstCharacterIndex + offset;
+        int length = wordInfo.characterCount;
+
+        string colorStart = $"<color={EmailParameters.HighlightedWordColor}>";
+        string colorEnd = "</color>";
+
+        newText = newText.Insert(startIndex, colorStart);
+        offset += colorStart.Length;
+
+        newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
+        offset += colorEnd.Length;
+
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();
     }
-    public List<string> GetHighlightedWords()
+    
+    
+    //----------------------Methods for testing----------------------
+    
+    public string GetHighlightedWord()
     {
-        List<string> words = new List<string>();
-        foreach (int i in HighlightedWordIndices)
+        if (HighlightedWordIndex != -1)
         {
-            TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[i];
-            words.Add(wordInfo.GetWord());
+            TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[HighlightedWordIndex];
+            return wordInfo.GetWord();
         }
-        return words;
+        return "";
     }
     
-    public void PrintHighlightedWords()
+    public void PrintHighlightedWord()
     {
-        List<string> words = GetHighlightedWords();
-        string wordstring = "";
-        foreach (string word in words)
-            wordstring += word + ",";
-        print(wordstring);
+        string word = GetHighlightedWord();
+        if (!string.IsNullOrEmpty(word))
+            print(word);
+        else
+            print("No word highlighted");
     }
+    
     public void HighlightDiscrepancies()
-    { 
-        PrintDiscrepancies();
-        
-        if (Discrepancies == null || Discrepancies.Count == 0)
-        {
-            return;
-        }
+    {
+        if (Discrepancies == null || Discrepancies.Count == 0) return;
+
         string newText = OriginalText;
+        EmailText.text = OriginalText;
         EmailText.ForceMeshUpdate();
         int offset = 0;
+
         for (int i = 0; i < EmailText.textInfo.wordCount; i++)
         {
             TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[i];
-            string word = wordInfo.GetWord();
+
             foreach (Discrepancy d in Discrepancies)
             {
-                if (word == d.GetDiscrepancyString())
+                if (wordInfo.firstCharacterIndex == d.GetStartIndex())
                 {
                     string colorStart = $"<color={EmailParameters.DiscrepancyColor}>";
                     string colorEnd = "</color>";
                     int startIndex = wordInfo.firstCharacterIndex + offset;
-                    int length = wordInfo.characterCount;
                     newText = newText.Insert(startIndex, colorStart);
                     offset += colorStart.Length;
-                    newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
+                    newText = newText.Insert(startIndex + wordInfo.characterCount + colorStart.Length, colorEnd);
                     offset += colorEnd.Length;
                     break;
                 }
             }
         }
+
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();
-    }
-
-    public List<Discrepancy> GetDiscrepancies()
-    {
-        return Discrepancies;
     }
     
     private void PrintDiscrepancies()
@@ -140,9 +151,9 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
             print($"Type: {d.GetType()}, Text: {d.GetDiscrepancyString()}");
         }
     }
-    
-    public string GetHighlightedWord()
+
+    private bool HasDiscrepancy()
     {
-        return HighlightedWord;
+        return Discrepancies.Count > 0;
     }
 }

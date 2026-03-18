@@ -5,26 +5,17 @@ using UnityEngine.Rendering;
 public class Slider : MonoBehaviour
 {
     public GameObject sliderPrefab;
-    public Emails Emails;
+    public EmailManager EmailManager;
 
     public int SliderAnimationDistance;
 
     private bool isShown = false;
     private bool isMoving = false;
-    
-    void Start()
-    {
-        
-    }
 
-    public void OnAcceptClick()
+    public void OnAcceptOrDenyClick()
     {
-        Emails.Accept();
-    }
-    
-    public void OnDenyClick()
-    {
-        Emails.Deny();
+        EmailManager.AcceptOrDeny();
+        OnSliderClick();
     }
 
     public void OnSliderClick()
