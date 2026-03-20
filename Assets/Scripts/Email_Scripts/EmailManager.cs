@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ public class EmailManager : MonoBehaviour
     
     private List<Email> Inbox;
     private int currentIndex;
+    private int correctAmount;
+    private int incorrectAmount;
 
     public void SetInbox(List<Email> inbox)
     {
@@ -21,6 +24,8 @@ public class EmailManager : MonoBehaviour
     public void Reset()
     {
         currentIndex = 0;
+        correctAmount = 0;
+        incorrectAmount = 0;
         ShuffleInbox();
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
@@ -36,7 +41,24 @@ public class EmailManager : MonoBehaviour
         return Inbox;
     }
     
-    public void AcceptOrDeny()
+    public void Accept()
+    {
+        AcceptOrDeny();
+        if (HasDiscrepancies())
+            incorrectAmount++;
+        print("--------------------------------------");
+        print("correct amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
+    }
+    public void Deny()
+    {
+        AcceptOrDeny();
+        if (HasDiscrepancies())
+            correctAmount++;
+        print("--------------------------------------");
+        print("correct amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
+    }
+    
+    private void AcceptOrDeny()
     {
         Inbox.RemoveAt(currentIndex);
 
@@ -51,7 +73,13 @@ public class EmailManager : MonoBehaviour
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
     }
-    
+
+    private bool HasDiscrepancies()
+    {
+        bool hasDiscrepancies = MainEmail.GetDiscrepancies().Count > 0;
+        return  hasDiscrepancies;
+    }
+
     private void ShuffleInbox()
     {
         for (int i = 0; i < Inbox.Count; i++)
@@ -86,5 +114,15 @@ public class EmailManager : MonoBehaviour
                 InboxImages[i].sprite = null;
             }
         }
+    }
+
+    public int GetCorrectAmount()
+    {
+        return correctAmount;
+    }
+
+    public int GetIncorrectAmount()
+    {
+        return incorrectAmount;
     }
 }

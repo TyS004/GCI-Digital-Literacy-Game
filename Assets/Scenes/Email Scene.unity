@@ -1729,7 +1729,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2078029367}
         m_TargetAssemblyTypeName: Slider, Assembly-CSharp
-        m_MethodName: OnAcceptOrDenyClick
+        m_MethodName: Accept
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5338,7 +5338,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2078029367}
         m_TargetAssemblyTypeName: Slider, Assembly-CSharp
-        m_MethodName: OnAcceptOrDenyClick
+        m_MethodName: Deny
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

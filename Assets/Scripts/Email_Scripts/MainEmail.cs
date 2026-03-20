@@ -41,6 +41,17 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     {
         return Discrepancies;
     }
+
+    public bool CheckDiscrepancy()
+    {
+        // have to make it so that we can check if the type is correct as well
+        foreach (Discrepancy d in Discrepancies)
+        {
+            string discrepancyString = d.GetDiscrepancyString();
+            if (discrepancyString == HighlightedWord) return true;
+        }
+        return false;
+    }
     
     private void ToggleWord(int wordIndex)
     {
@@ -73,12 +84,12 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 
         string colorStart = $"<color={EmailParameters.HighlightedWordColor}>";
         string colorEnd = "</color>";
-
+        
         newText = newText.Insert(startIndex, colorStart);
         offset += colorStart.Length;
 
         newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
-        offset += colorEnd.Length;
+        //offset += colorEnd.Length;
 
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();

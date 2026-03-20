@@ -12,9 +12,15 @@ public class Slider : MonoBehaviour
     private bool isShown = false;
     private bool isMoving = false;
 
-    public void OnAcceptOrDenyClick()
+    public void Accept()
     {
-        EmailManager.AcceptOrDeny();
+        EmailManager.Accept();
+        OnSliderClick();
+    }
+    
+    public void Deny()
+    {
+        EmailManager.Deny();
         OnSliderClick();
     }
 
