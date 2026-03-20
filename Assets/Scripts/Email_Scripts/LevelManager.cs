@@ -19,7 +19,7 @@ public class LevelManager : MonoBehaviour
     {
         if (currentLevel != 0 && EmailManager.GetIncorrectAmount() > 0)
         {
-            // end of level flash screen if correct or wrong
+            // end of level trigger
         }
         EmailManager.SetInbox(Levels[currentLevel].GetInbox());
         currentLevel++;

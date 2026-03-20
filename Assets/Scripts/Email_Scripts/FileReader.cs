@@ -8,12 +8,11 @@ public class FileReader : MonoBehaviour
 {
     public ProfileImageManager ProfileImageManager;
     private string emailsPath;
-    
     private string levelsFolderPath;
 
     private void Awake()
     {
-        levelsFolderPath = Path.Combine(Application.dataPath, "Text/Level Emails");
+        levelsFolderPath = Path.Combine(Application.dataPath, "Levels/Text");
         if (ProfileImageManager == null)
             ProfileImageManager = Object.FindFirstObjectByType<ProfileImageManager>();
     }
