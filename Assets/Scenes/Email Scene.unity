@@ -3188,7 +3188,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 439.6, y: -128}
   m_SizeDelta: {x: 550, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &790653309
@@ -3271,7 +3271,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50220fcf3cd6e5e40b6d09537fb9e8a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CheckertextScrpt
-  MainEmail: {fileID: 1919533910}
 --- !u!114 &801061332 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8534305255476530577, guid: eecbc1020dc7a48c0b6a18894709a716, type: 3}
