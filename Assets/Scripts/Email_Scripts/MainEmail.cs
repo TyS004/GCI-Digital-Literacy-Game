@@ -42,15 +42,20 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         return Discrepancies;
     }
 
-    public bool CheckDiscrepancy()
+    public void CheckDiscrepancy(string type)
     {
-        // have to make it so that we can check if the type is correct as well
         foreach (Discrepancy d in Discrepancies)
         {
             string discrepancyString = d.GetDiscrepancyString();
-            if (discrepancyString == HighlightedWord) return true;
+            if (discrepancyString == HighlightedWord && type == d.GetDiscrepancyType())
+            {
+                print("Discrepancy detected");
+                //return true;
+                return;
+            }
         }
-        return false;
+        print("Discrepancy not detected");
+        //return false;
     }
     
     private void ToggleWord(int wordIndex)
@@ -58,10 +63,12 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         if (HighlightedWordIndex == wordIndex)
         {
             HighlightedWordIndex = -1;
+            HighlightedWord = "";
         }
         else
         {
             HighlightedWordIndex = wordIndex;
+            HighlightedWord = EmailText.textInfo.wordInfo[wordIndex].GetWord();
         }
 
         UpdateHighlightedText();

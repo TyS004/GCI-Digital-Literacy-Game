@@ -1,4 +1,4 @@
-From: support@<d type="domain">steem</d>.com
+From: support@steam.com
 Subject: Password Reset
 Body: We received a request to reset your password. If this was you, click the link below to create a new one. Otherwise, ignore this email.
 
