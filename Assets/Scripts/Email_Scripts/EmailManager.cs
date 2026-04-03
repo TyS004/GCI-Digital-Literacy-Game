@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using NUnit.Framework;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,33 +42,27 @@ public class EmailManager : MonoBehaviour
         return Inbox;
     }
     
-    public void Accept()
+    public void AcceptOrDeny(bool accepted)
     {
-        AcceptOrDeny();
-        if (HasDiscrepancies())
-            incorrectAmount++;
-        print("--------------------------------------" + "\ncorrect amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
-    }
-    
-    public void Deny()
-    {
-        AcceptOrDeny();
-        if (HasDiscrepancies())
-            correctAmount++;
-        print("--------------------------------------" + "\ncorrect amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
-    }
-    
-    private void AcceptOrDeny()
-    {
-        Inbox.RemoveAt(currentIndex);
+        bool correct = accepted ? !HasDiscrepancies() : HasDiscrepancies();
 
+        if (correct)
+        {
+            correctAmount++;
+            print("correct");
+        }
+        else
+        {
+            incorrectAmount++;
+            print("incorrect");
+        }
+        
+        Inbox.RemoveAt(currentIndex);
         if (currentIndex >= Inbox.Count)
             currentIndex--;
 
         if (Inbox.Count == 0)
-        {
             LevelManager.LoadNextLevel();
-        }
 
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);

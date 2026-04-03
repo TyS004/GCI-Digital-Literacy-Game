@@ -14,13 +14,13 @@ public class Slider : MonoBehaviour
 
     public void Accept()
     {
-        EmailManager.Accept();
+        EmailManager.AcceptOrDeny(true);
         OnSliderClick();
     }
     
     public void Deny()
     {
-        EmailManager.Deny();
+        EmailManager.AcceptOrDeny(false);
         OnSliderClick();
     }
 
