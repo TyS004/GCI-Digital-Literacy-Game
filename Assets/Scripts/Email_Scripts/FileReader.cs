@@ -12,9 +12,7 @@ public class FileReader : MonoBehaviour
 
     private void Awake()
     {
-        levelsFolderPath = Path.Combine(Application.dataPath, "Levels/Text");
-        if (ProfileImageManager == null)
-            ProfileImageManager = Object.FindFirstObjectByType<ProfileImageManager>();
+        levelsFolderPath = Path.Combine(Application.dataPath, "Resources/Levels/Text");
     }
     
     public List<Level> Load()

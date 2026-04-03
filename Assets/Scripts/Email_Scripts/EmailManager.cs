@@ -46,16 +46,15 @@ public class EmailManager : MonoBehaviour
         AcceptOrDeny();
         if (HasDiscrepancies())
             incorrectAmount++;
-        print("--------------------------------------");
-        print("correct amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
+        print("--------------------------------------" + "\ncorrect amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
     }
+    
     public void Deny()
     {
         AcceptOrDeny();
         if (HasDiscrepancies())
             correctAmount++;
-        print("--------------------------------------");
-        print("correct amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
+        print("--------------------------------------" + "\ncorrect amount: " + correctAmount + "\nincorrect amount: " + incorrectAmount);
     }
     
     private void AcceptOrDeny()
