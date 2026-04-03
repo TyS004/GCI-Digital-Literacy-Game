@@ -41,16 +41,34 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     {
         return Discrepancies;
     }
+
+    public void CheckDiscrepancy(string type)
+    {
+        foreach (Discrepancy d in Discrepancies)
+        {
+            string discrepancyString = d.GetDiscrepancyString();
+            if (discrepancyString == HighlightedWord && type == d.GetDiscrepancyType())
+            {
+                print("Discrepancy detected");
+                //return true;
+                return;
+            }
+        }
+        print("Discrepancy not detected");
+        //return false;
+    }
     
     private void ToggleWord(int wordIndex)
     {
         if (HighlightedWordIndex == wordIndex)
         {
             HighlightedWordIndex = -1;
+            HighlightedWord = "";
         }
         else
         {
             HighlightedWordIndex = wordIndex;
+            HighlightedWord = EmailText.textInfo.wordInfo[wordIndex].GetWord();
         }
 
         UpdateHighlightedText();
@@ -73,12 +91,12 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 
         string colorStart = $"<color={EmailParameters.HighlightedWordColor}>";
         string colorEnd = "</color>";
-
+        
         newText = newText.Insert(startIndex, colorStart);
         offset += colorStart.Length;
 
         newText = newText.Insert(startIndex + length + colorStart.Length, colorEnd);
-        offset += colorEnd.Length;
+        //offset += colorEnd.Length;
 
         EmailText.text = newText;
         EmailText.ForceMeshUpdate();

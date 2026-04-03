@@ -15,7 +15,7 @@ public class Discrepancy
         EndIndex = endIndex;
     }
     
-    new public string GetType()
+    public string GetDiscrepancyType()
     {
         return Type;
     }

@@ -17,8 +17,16 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
+        if (currentLevel != 0 && EmailManager.GetIncorrectAmount() > 0)
+        {
+            // end of level trigger
+        }
         EmailManager.SetInbox(Levels[currentLevel].GetInbox());
         currentLevel++;
-        
+    }
+    
+    private bool CanContinue()
+    {
+        return false;
     }
 }
