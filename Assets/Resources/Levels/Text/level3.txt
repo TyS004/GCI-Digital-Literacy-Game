@@ -1,4 +1,4 @@
-From: noreply@chapman.edu
+From: noreply@<d type="domain">chaprnan</d>.edu
 Subject: Course Registration Confirmation
 Body: You have successfully registered for <d type="course">GCI 200</d>. Please review your schedule and contact the registrar if you notice any issues.
 
