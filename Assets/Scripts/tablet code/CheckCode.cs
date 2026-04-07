@@ -16,7 +16,7 @@ namespace tablet_code
                 if (d.GetDiscrepancyString() == email.GetHighlightedWord())
                 {
                     foundDiscrepancy = true;
-                    if (d.GetType() == clickedButton.tag)
+                    if (d.GetDiscrepancyString() == email.GetHighlightedWord())
                     {
                         print("correct button used");
                     }

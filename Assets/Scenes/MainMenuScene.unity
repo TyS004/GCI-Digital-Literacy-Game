@@ -948,17 +948,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d9d18de0835f4951ad8162910e28dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Profiles:
-  - Email: someone@email.com
-    ProfileSprite: {fileID: 21300000, guid: 3804bfe4c7ce043d4b9daa0577595993, type: 3}
-  - Email: support@steam.com
-    ProfileSprite: {fileID: 21300000, guid: efadf26488aa247fc93b1d5c4bf9eca6, type: 3}
-  - Email: sales@homeessentials.com
-    ProfileSprite: {fileID: 21300000, guid: 98081c7ef2e4f4cc0ab957915fa40f4b, type: 3}
-  - Email: noreply@chapman.edu
-    ProfileSprite: {fileID: 21300000, guid: bc9c25936837845fca11afa1a839b038, type: 3}
-  - Email: security@bank.net
-    ProfileSprite: {fileID: 21300000, guid: 1b044d112fbf34de192db0d13cb35002, type: 3}
   DefaultSprite: {fileID: 21300000, guid: 1ae390f383d8548beb9970de4017829e, type: 3}
 --- !u!114 &264340671 stripped
 MonoBehaviour:
