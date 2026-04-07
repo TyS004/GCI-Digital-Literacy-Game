@@ -13,5 +13,6 @@ public class InfoToggle : MonoBehaviour
         isOpen = !isOpen;
         infoPanel.SetActive(isOpen);
         arrowText.text = isOpen ? "▼" : "►";
+        // this is a test
     }
 }
