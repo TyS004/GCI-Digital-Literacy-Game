@@ -43,6 +43,7 @@ public class LevelManager : MonoBehaviour
     
     private bool CanContinue()
     {
+        // can continue if incorrect amount is within a certain threshold
         return false;
     }
 }
