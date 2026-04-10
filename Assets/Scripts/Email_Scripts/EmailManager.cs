@@ -62,7 +62,11 @@ public class EmailManager : MonoBehaviour
             currentIndex--;
 
         if (Inbox.Count == 0)
+        {
+            LevelManager.IncreaseTotalCorrect(correctAmount);
+            LevelManager.IncreaseTotalIncorrect(incorrectAmount);
             LevelManager.LoadNextLevel();
+        }
 
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
