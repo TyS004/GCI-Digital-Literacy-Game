@@ -46,4 +46,14 @@ public class LevelManager : MonoBehaviour
         // can continue if incorrect amount is within a certain threshold
         return false;
     }
+
+    public int GetTotalCorrect()
+    {
+        return totalCorrect;
+    }
+    
+    public int GetTotalIncorrect()
+    {
+        return totalIncorrect;
+    }
 }

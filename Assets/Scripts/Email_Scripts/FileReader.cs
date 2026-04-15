@@ -38,43 +38,52 @@ public class FileReader : MonoBehaviour
     }
     
     private List<Email> ReadEmailsAndImagesFromFile(string filePath)
+{
+    List<Email> emails = new List<Email>();
+
+    string[] emailBlocks = File.ReadAllText(filePath)
+        .Split(new string[] { "\r\n\r\n", "\n\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+
+    foreach (string block in emailBlocks)
     {
-        List<Email> emails = new List<Email>();
+        string from = "";
+        string subject = "";
+        string body = "";
 
-        string[] emailBlocks = File.ReadAllText(filePath)
-            .Split(new string[] { "\r\n\r\n", "\n\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] lines = block.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
 
-        foreach (string block in emailBlocks)
+        foreach (string line in lines)
         {
-            string from = "";
-            string subject = "";
-            string body = "";
-
-            string[] lines = block.Split(new string[] { "\n" }, System.StringSplitOptions.RemoveEmptyEntries);
-
-            foreach (string line in lines)
-            {
-                if (line.StartsWith("From: ")) from = line.Substring(6).Trim();
-                else if (line.StartsWith("Subject: ")) subject = line.Substring(9).Trim();
-                else if (line.StartsWith("Body: ")) body = line.Substring(6).Trim();
-            }
-
-            List<Discrepancy> fromDiscrepancies = AssignDiscrepancies(ref from);
-            List<Discrepancy> subjectDiscrepancies = AssignDiscrepancies(ref subject);
-            List<Discrepancy> bodyDiscrepancies = AssignDiscrepancies(ref body);
-
-            List<Discrepancy> allDiscrepancies = new List<Discrepancy>();
-            allDiscrepancies.AddRange(fromDiscrepancies);
-            allDiscrepancies.AddRange(subjectDiscrepancies);
-            allDiscrepancies.AddRange(bodyDiscrepancies);
-
-            Sprite profileImageSprite = ProfileImageManager.GetProfile(from);
-
-            emails.Add(new Email(from, subject, body, profileImageSprite, allDiscrepancies));
+            if (line.StartsWith("From: ")) from = line.Substring(6).Trim();
+            else if (line.StartsWith("Subject: ")) subject = line.Substring(9).Trim();
+            else if (line.StartsWith("Body: ")) body = line.Substring(6).Trim();
         }
 
-        return emails;
+        List<Discrepancy> fromDiscrepancies = AssignDiscrepancies(ref from);
+        List<Discrepancy> subjectDiscrepancies = AssignDiscrepancies(ref subject);
+        List<Discrepancy> bodyDiscrepancies = AssignDiscrepancies(ref body);
+
+        // calculate offsets based on GetFullText() format: "From: {from}\nSubject: {subject}\nBody: {body}"
+        int fromOffset = "From: ".Length;
+        int subjectOffset = ("From: " + from + "\nSubject: ").Length;
+        int bodyOffset = ("From: " + from + "\nSubject: " + subject + "\nBody: ").Length;
+
+        foreach (Discrepancy d in fromDiscrepancies) d.AddOffset(fromOffset);
+        foreach (Discrepancy d in subjectDiscrepancies) d.AddOffset(subjectOffset);
+        foreach (Discrepancy d in bodyDiscrepancies) d.AddOffset(bodyOffset);
+
+        List<Discrepancy> allDiscrepancies = new List<Discrepancy>();
+        allDiscrepancies.AddRange(fromDiscrepancies);
+        allDiscrepancies.AddRange(subjectDiscrepancies);
+        allDiscrepancies.AddRange(bodyDiscrepancies);
+
+        Sprite profileImageSprite = ProfileImageManager.GetProfile(from);
+
+        emails.Add(new Email(from, subject, body, profileImageSprite, allDiscrepancies));
     }
+
+    return emails;
+}
     
     private List<Discrepancy> AssignDiscrepancies(ref string text)
     {

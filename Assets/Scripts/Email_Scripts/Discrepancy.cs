@@ -15,6 +15,12 @@ public class Discrepancy
         EndIndex = endIndex;
     }
     
+    public void AddOffset(int offset)
+    {
+        StartIndex += offset;
+        EndIndex += offset;
+    }
+    
     public string GetDiscrepancyType()
     {
         return Type;
