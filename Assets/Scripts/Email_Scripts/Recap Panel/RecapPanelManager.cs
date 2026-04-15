@@ -64,7 +64,7 @@ public class RecapPanelManager : MonoBehaviour
         double timeMultiplier = 5.0;
         double points = (TotalCorrect * correctMultiplier) + (TimeElapsed * timeMultiplier);
         
-        PointsText.text = $"Total Correct: {TotalCorrect} x {correctMultiplier}\nTime Elapsed: {TimeElapsed} x {timeMultiplier}\n_________\n\nTotal Points: {points}";
+        PointsText.text = $"Correct: {TotalCorrect} x {correctMultiplier}\nTime: {TimeElapsed} x {timeMultiplier}\n_________\n\nTotal Points: {points}";
     }
 
 }
