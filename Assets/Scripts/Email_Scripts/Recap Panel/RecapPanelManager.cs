@@ -13,6 +13,7 @@ public class RecapPanelManager : MonoBehaviour
     
     private int TotalCorrect;
     private int TotalIncorrect;
+    private double TimeElapsed;
 
     public void Start()
     {
@@ -21,8 +22,19 @@ public class RecapPanelManager : MonoBehaviour
     public void Show()
     {
         RecapCanvas.enabled = true;
+        UpdateRecapPanel();
+    }
+
+    private void UpdateRecapPanel()
+    {
+        TotalCorrect = LevelManager.GetTotalCorrect();
+        TotalIncorrect = LevelManager.GetTotalIncorrect();
+        TimeElapsed = 0;
+        
         RecapEmailManager.SetInbox();
-        UpdateStats();
+        UpdateHeader();
+        UpdateResults();
+        UpdatePoints();
     }
 
     public void Hide()
@@ -38,15 +50,21 @@ public class RecapPanelManager : MonoBehaviour
 
     private void UpdateHeader()
     {
-        
+        HeaderText.text = $"Level {LevelManager.GetCurrentLevel()} Recap";
     }
     
-    private void UpdateStats()
+    private void UpdateResults()
     {
-        TotalCorrect = LevelManager.GetTotalCorrect();
-        TotalIncorrect = LevelManager.GetTotalIncorrect();
+        ResultsText.text = $"Correct Amount: {TotalCorrect}\nIncorrect Amount: {TotalIncorrect}";
+    }
+
+    private void UpdatePoints()
+    {
+        double correctMultiplier = 5.0;
+        double timeMultiplier = 5.0;
+        double points = (TotalCorrect * correctMultiplier) + (TimeElapsed * timeMultiplier);
         
-        
+        PointsText.text = $"Total Correct: {TotalCorrect} x {correctMultiplier}\nTime Elapsed: {TimeElapsed} x {timeMultiplier}\n_________\n\nTotal Points: {points}";
     }
 
 }

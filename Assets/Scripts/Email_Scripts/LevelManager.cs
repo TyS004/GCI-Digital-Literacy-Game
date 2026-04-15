@@ -47,6 +47,11 @@ public class LevelManager : MonoBehaviour
         return false;
     }
 
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
+
     public int GetTotalCorrect()
     {
         return totalCorrect;
