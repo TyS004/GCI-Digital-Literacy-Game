@@ -4,14 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections.Generic;
+
 public class RecapMainEmail : MonoBehaviour
 {
     public TMP_Text EmailText;
     public Image SenderImage;
-    
+
     private string OriginalText;
     private List<Discrepancy> Discrepancies = new List<Discrepancy>();
-    
+
     public void ChangeMainEmail(Email email)
     {
         EmailText.text = email.GetFullText();
@@ -26,13 +27,13 @@ public class RecapMainEmail : MonoBehaviour
         yield return null;
         HighlightDiscrepancies();
     }
-    
+
     void Awake()
     {
         if (EmailText == null) EmailText = GetComponent<TMP_Text>();
         OriginalText = EmailText.text;
     }
-    
+
     public void HighlightDiscrepancies()
     {
         if (Discrepancies == null || Discrepancies.Count == 0) return;
@@ -45,11 +46,10 @@ public class RecapMainEmail : MonoBehaviour
         for (int i = 0; i < EmailText.textInfo.wordCount; i++)
         {
             TMP_WordInfo wordInfo = EmailText.textInfo.wordInfo[i];
-            string word = wordInfo.GetWord();
 
             foreach (Discrepancy d in Discrepancies)
             {
-                if (word == d.GetDiscrepancyString())
+                if (wordInfo.firstCharacterIndex == d.GetStartIndex())
                 {
                     string colorStart = $"<color={EmailParameters.DiscrepancyColor}>";
                     string colorEnd = "</color>";
