@@ -16,6 +16,11 @@ public static class EmailParameters
     public static Color IncorrectEmailPressedColor = GetColor("#a66f70");
     public static Color IncorrectEmailSelectedColor = GetColor("#c28d8e");
     
+    public static Color DefaultEmailNormalColor = GetColor("#FFFFFF");
+    public static Color DefaultEmailHighlightedColor = GetColor("#EEEEEE");
+    public static Color DefaultEmailPressedColor = GetColor("#D1D1D1");
+    public static Color DefaultEmailSelectedColor = GetColor("#C8C8C8");
+    
     public static Color GetColor(string hex)
     {
         ColorUtility.TryParseHtmlString(hex, out Color color);
