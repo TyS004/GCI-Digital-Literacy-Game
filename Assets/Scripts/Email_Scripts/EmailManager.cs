@@ -7,39 +7,41 @@ using UnityEngine.UI;
 public class EmailManager : MonoBehaviour
 {
     public LevelManager LevelManager;
+    public RecapPanelManager RecapPanelManager;
     public MainEmail MainEmail;
     public List<Text> InboxTexts;
     public List<Image> InboxImages;
     
     private List<Email> Inbox;
+    private List<Email> OriginalInbox;
+    private List<int> CorrectIndices;
     private int currentIndex;
     private int correctAmount;
     private int incorrectAmount;
 
     public void SetInbox(List<Email> inbox)
     {
-        Inbox = inbox;
+        Inbox = new List<Email>(inbox);
         Reset();
     }
-    
+
     public void Reset()
     {
         currentIndex = 0;
         correctAmount = 0;
         incorrectAmount = 0;
+        CorrectIndices = new List<int>();
+        
         ShuffleInbox();
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
+        
+        OriginalInbox = new List<Email>(Inbox);
     }
 
     public void OnInboxEmailClick(int index)
     {
         DisplayEmail(index);
-    }
-
-    public List<Email> GetInbox()
-    {
-        return Inbox;
     }
     
     public void AcceptOrDeny(bool accepted)
@@ -49,6 +51,7 @@ public class EmailManager : MonoBehaviour
         if (correct)
         {
             correctAmount++;
+            CorrectIndices.Add(GetOriginalEmailIndex());
             print("correct");
         }
         else
@@ -62,10 +65,35 @@ public class EmailManager : MonoBehaviour
             currentIndex--;
 
         if (Inbox.Count == 0)
-            LevelManager.LoadNextLevel();
+        {
+            LevelManager.IncreaseTotalCorrect(correctAmount);
+            LevelManager.IncreaseTotalIncorrect(incorrectAmount);
+            RecapPanelManager.Show();
+            return;
+        }
 
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
+    }
+    
+    public void DisplayEmail(int index)
+    {
+        if (Inbox.Count > 0)
+        {
+            Email email = Inbox[index];
+            MainEmail.ChangeMainEmail(email);
+            currentIndex = index;
+        }
+    }
+
+    private int GetOriginalEmailIndex()
+    {
+        Email current = Inbox[currentIndex];
+        for (int i = 0; i < OriginalInbox.Count; i++)
+            if (ReferenceEquals(OriginalInbox[i], current))
+                return i;
+        Debug.Log("Could not match email to original inbox");
+        return -1;
     }
 
     private bool HasDiscrepancies()
@@ -80,16 +108,6 @@ public class EmailManager : MonoBehaviour
         {
             int randIndex = Random.Range(i, Inbox.Count);
             (Inbox[i], Inbox[randIndex]) = (Inbox[randIndex], Inbox[i]);
-        }
-    }
-
-    public void DisplayEmail(int index)
-    {
-        if (Inbox.Count > 0)
-        {
-            Email email = Inbox[index];
-            MainEmail.ChangeMainEmail(email);
-            currentIndex = index;
         }
     }
     
@@ -109,6 +127,11 @@ public class EmailManager : MonoBehaviour
             }
         }
     }
+    
+    public List<Email> GetInbox()
+    {
+        return Inbox;
+    }
 
     public int GetCorrectAmount()
     {
@@ -118,5 +141,15 @@ public class EmailManager : MonoBehaviour
     public int GetIncorrectAmount()
     {
         return incorrectAmount;
+    }
+
+    public List<Email> GetOriginalInbox()
+    {
+        return OriginalInbox;
+    }
+
+    public List<int> GetCorrectIndices()
+    {
+        return CorrectIndices;
     }
 }

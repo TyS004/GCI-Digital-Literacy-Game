@@ -6,7 +6,10 @@ public class LevelManager : MonoBehaviour
     public FileReader FileReader;
     public EmailManager EmailManager;
     private List<Level> Levels;
+    
     private int currentLevel;
+    private int totalCorrect;
+    private int totalIncorrect;
 
     public void Start()
     {
@@ -23,10 +26,39 @@ public class LevelManager : MonoBehaviour
         }
         EmailManager.SetInbox(Levels[currentLevel].GetInbox());
         currentLevel++;
+
+
+        print("total correct: " + totalCorrect);
+    }
+
+    public void IncreaseTotalCorrect(int correctAmount)
+    {
+        totalCorrect += correctAmount;
+    }
+    
+    public void IncreaseTotalIncorrect(int incorrectAmount)
+    {
+        totalIncorrect += incorrectAmount;
     }
     
     private bool CanContinue()
     {
+        // can continue if incorrect amount is within a certain threshold
         return false;
+    }
+
+    public int GetCurrentLevel()
+    {
+        return currentLevel;
+    }
+
+    public int GetTotalCorrect()
+    {
+        return totalCorrect;
+    }
+    
+    public int GetTotalIncorrect()
+    {
+        return totalIncorrect;
     }
 }
