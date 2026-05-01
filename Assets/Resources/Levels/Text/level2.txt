@@ -1,7 +1,21 @@
-From: noreply@<d type="domain">chaprnan</d>.edu
-Subject: Course Registration Confirmation
-Body: You have successfully registered for <d type="course">GCI 200</d>. Please review your schedule and contact the registrar if you notice any issues.
+From: alerts@<d type="domain">banksofamerica</d>.com
+Subject: Late Payment
+Body: We have noticed that you are late for your account payment for a sum of $3,000.00 that was due last week. It is requested that you are to make this payment within the week otherwise we may have to incur late fees and or collect on your collateral. If you have any concerns or questions about what this may mean, or if you want to pay your sum you can click this link here. Link
 
-From: security@bank.net
-Subject: Unusual Login Activity
-Body: We noticed a security login from a new security device. If this was you, no action is needed. If not, please secure your account immediately. <d type="sensitive">Account security alert</d>
+From: info@account.netflix.com
+Subject: Verify Your Email Address
+Body: Hi there, there is just one more step to finish making your account. You just need to click this button to verify your email address. Confirm Here
+
+From: service@<d type="domain">paypl</d>.com
+Subject: Security
+Body: Dear Customer, we have recently noticed suspicious activity on your account and we will need to temporarily suspend your account. In order to lift this suspension all you will have to do is verify some information on our website. Until this information is updated we will have to keep your account suspended.
+
+From: nike@official.nike.com
+Subject: 20% Off on Special Items
+Body: On your next purchase of select items you are eligible to receive a discount of up to 20%. To receive the discount you just have to use the code at checkout. All items have free shipping and can be returned in 60 days of purchase. Check out our new shoes on our website now. Code: I<3Nike 
+
+From: jim@<d type="domain">macrosoft</d>.com
+Subject: Support Request
+Body: Thank you for contacting Microsoft support for your technical issues on your computer. What you have is a common issue, and should be simple to fix. You just need to install a program so that I can help you fix your computer.
+      Best Regards,
+      Jim
