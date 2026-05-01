@@ -122,11 +122,13 @@ public class EmailManager : MonoBehaviour
                 InboxTexts[i].text = inbox[i].GetFrom() + "\n" + inbox[i].GetSubject();
                 InboxImages[i].sprite = inbox[i].GetProfileImageSprite();
                 InboxButtons[i].interactable = true;
+                // show profile image
             }
             else
             {
                 InboxTexts[i].text = "";
                 InboxImages[i].sprite = null;
+                InboxButtons[i].interactable = false;
             }
         }
     }
@@ -135,6 +137,7 @@ public class EmailManager : MonoBehaviour
     {
         foreach (Button button in InboxButtons)
         {
+            // hide profile images
             button.interactable = false;
             ColorBlock colors = button.colors;
             colors.normalColor = EmailParameters.DefaultEmailNormalColor;
