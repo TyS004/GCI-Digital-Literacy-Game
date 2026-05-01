@@ -1,20 +1,25 @@
+Profile: <d type="profile">redbull</d>
 From: redbull@gmail.com
 Subject: New Job Opening
 Body: We have a new job opening at our company and we look for the best and brightest minds to join our company. It is important that all of our candidates are creative, and team players. Our interviews will be next Thursday, we hope that you will be a good fit for our company. For more information you can check our website and make an application here. Click Here
 
+Profile: 
 From: order-update@amazon.com
 Subject: Item Delivery Status
 Body: Your package has been delivered. It has been left near a front door or porch.
       Order # 9309-0390932-1058293
 
+Profile: 
 From: no-reply@roblox.com
 Subject: Account Deactivated by Roblox Support
 Body:Hello, unfortunately your Roblox account davidbazuckifan2019 has been banned due to a violation of Roblox terms of service. Your account will be terminated in 5 days, and all your account items will be removed. If you believe your account is being wrongfully terminated you may make an appeal by clicking this link here and stating why you believe you are being wrongfully terminated. Click Here
 
+Profile: 
 From: no-reply@accounts.google.com
 Subject: Security Alert
 Body: We noticed a new sign in to your Google account on a new device. If this was you, you do not need to do anything. If this was not you please click this link so we can help you secure your account. Click Here.
 
+Profile: 
 From: noreply@discord.com
 Subject: Data Leak
 Body: Hello, recently our platform has had a data breach and many people’s data has been leaked. Your information may have been compromised in this breach. This data may include personal information given to us by you during account creation and also payment method information. If you want more information or help with what to do, you can contact us by clicking here.
