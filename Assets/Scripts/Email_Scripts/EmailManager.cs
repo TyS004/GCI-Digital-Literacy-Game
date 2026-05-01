@@ -11,6 +11,7 @@ public class EmailManager : MonoBehaviour
     public MainEmail MainEmail;
     public List<Text> InboxTexts;
     public List<Image> InboxImages;
+    public List<Button> InboxButtons;
     
     private List<Email> Inbox;
     private List<Email> OriginalInbox;
@@ -33,6 +34,7 @@ public class EmailManager : MonoBehaviour
         CorrectIndices = new List<int>();
         
         ShuffleInbox();
+        ResetInboxStyling();
         DisplayEmail(currentIndex);
         UpdateInbox(Inbox);
         
@@ -119,12 +121,30 @@ public class EmailManager : MonoBehaviour
             {
                 InboxTexts[i].text = inbox[i].GetFrom() + "\n" + inbox[i].GetSubject();
                 InboxImages[i].sprite = inbox[i].GetProfileImageSprite();
+                InboxButtons[i].interactable = true;
+                // show profile image
             }
             else
             {
                 InboxTexts[i].text = "";
                 InboxImages[i].sprite = null;
+                InboxButtons[i].interactable = false;
             }
+        }
+    }
+    
+    private void ResetInboxStyling()
+    {
+        foreach (Button button in InboxButtons)
+        {
+            // hide profile images
+            button.interactable = false;
+            ColorBlock colors = button.colors;
+            colors.normalColor = EmailParameters.DefaultEmailNormalColor;
+            colors.highlightedColor = EmailParameters.DefaultEmailHighlightedColor;
+            colors.pressedColor = EmailParameters.DefaultEmailPressedColor;
+            colors.selectedColor = EmailParameters.DefaultEmailSelectedColor;
+            button.colors = colors;
         }
     }
     
@@ -152,4 +172,6 @@ public class EmailManager : MonoBehaviour
     {
         return CorrectIndices;
     }
+    
+    
 }

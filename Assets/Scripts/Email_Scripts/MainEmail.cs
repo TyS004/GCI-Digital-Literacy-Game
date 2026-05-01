@@ -12,6 +12,17 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     private int HighlightedWordIndex = -1;
     private string HighlightedWord;
     private List<Discrepancy> Discrepancies = new List<Discrepancy>();
+    private Button ProfileImageButton;
+    private bool profileSelected = false;
+    
+    void Awake()
+    {
+        if (EmailText == null) EmailText = GetComponent<TMP_Text>();
+        OriginalText = EmailText.text;
+    
+        ProfileImageButton = SenderImage.GetComponent<Button>();
+        ProfileImageButton.onClick.AddListener(OnProfileImageClicked);
+    }
     
     public void ChangeMainEmail(Email email)
     {
@@ -22,17 +33,13 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         Discrepancies = email.GetDiscrepancies();
     }
     
-    void Awake()
-    {
-        if (EmailText == null) EmailText = GetComponent<TMP_Text>();
-        OriginalText = EmailText.text;
-    }
-    
     public void OnPointerClick(PointerEventData eventData)
     {
         int wordIndex = TMP_TextUtilities.FindIntersectingWord(EmailText, eventData.position, eventData.pressEventCamera);
         if (wordIndex != -1)
         {
+            profileSelected = false;
+            SenderImage.color = Color.white;
             ToggleWord(wordIndex);
         }
     }
@@ -46,16 +53,29 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     {
         foreach (Discrepancy d in Discrepancies)
         {
-            string discrepancyString = d.GetDiscrepancyString();
-            if (discrepancyString == HighlightedWord && type == d.GetDiscrepancyType())
+            if (profileSelected && d.GetDiscrepancyType() == "profile" && type == "profile")
             {
                 print("Discrepancy detected");
-                //return true;
+                return;
+            }
+            if (d.GetDiscrepancyString() == HighlightedWord && type == d.GetDiscrepancyType())
+            {
+                print("Discrepancy detected");
                 return;
             }
         }
         print("Discrepancy not detected");
-        //return false;
+    }
+
+    private void OnProfileImageClicked()
+    {
+        profileSelected = !profileSelected;
+        SenderImage.color = profileSelected ? Color.lightGray : Color.white;
+    
+        // Deselect any highlighted word
+        HighlightedWordIndex = -1;
+        HighlightedWord = "";
+        UpdateHighlightedText();
     }
     
     private void ToggleWord(int wordIndex)
