@@ -46,6 +46,7 @@ public class FileReader : MonoBehaviour
 
     foreach (string block in emailBlocks)
     {
+        string profile = "";
         string from = "";
         string subject = "";
         string body = "";
@@ -54,11 +55,13 @@ public class FileReader : MonoBehaviour
 
         foreach (string line in lines)
         {
-            if (line.StartsWith("From: ")) from = line.Substring(6).Trim();
+            if (line.StartsWith("Profile: ")) profile = line.Substring(9).Trim();
+            else if (line.StartsWith("From: ")) from = line.Substring(6).Trim();
             else if (line.StartsWith("Subject: ")) subject = line.Substring(9).Trim();
             else if (line.StartsWith("Body: ")) body = line.Substring(6).Trim();
         }
 
+        List<Discrepancy> profileDiscrepancies = AssignDiscrepancies(ref profile);
         List<Discrepancy> fromDiscrepancies = AssignDiscrepancies(ref from);
         List<Discrepancy> subjectDiscrepancies = AssignDiscrepancies(ref subject);
         List<Discrepancy> bodyDiscrepancies = AssignDiscrepancies(ref body);
@@ -73,11 +76,12 @@ public class FileReader : MonoBehaviour
         foreach (Discrepancy d in bodyDiscrepancies) d.AddOffset(bodyOffset);
 
         List<Discrepancy> allDiscrepancies = new List<Discrepancy>();
+        allDiscrepancies.AddRange(profileDiscrepancies);
         allDiscrepancies.AddRange(fromDiscrepancies);
         allDiscrepancies.AddRange(subjectDiscrepancies);
         allDiscrepancies.AddRange(bodyDiscrepancies);
 
-        Sprite profileImageSprite = ProfileImageManager.GetProfile(from);
+        Sprite profileImageSprite = ProfileImageManager.GetProfile(profile);
 
         emails.Add(new Email(from, subject, body, profileImageSprite, allDiscrepancies));
     }

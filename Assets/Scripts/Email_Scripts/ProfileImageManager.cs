@@ -15,12 +15,10 @@ public class ProfileImageManager : MonoBehaviour
         profileSprites = Resources.LoadAll<Sprite>(path);
     }
 
-    public Sprite GetProfile(string email)
+    public Sprite GetProfile(string profile)
     {
-        string domain = email.Contains("@") ? email.Split('@')[1].Split('.')[0].ToLower() : email.ToLower();
-        
         foreach (Sprite sprite in profileSprites)
-            if (sprite.name == domain)
+            if (sprite.name == profile)
                 return sprite;
             
         return DefaultSprite;
