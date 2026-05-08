@@ -685,6 +685,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - {m_Target: {fileID: 1919533910}, m_TargetAssemblyTypeName: 'MainEmail, Assembly-CSharp', m_MethodName: CheckDiscrepancy, m_Mode: 5, m_Arguments: {m_ObjectArgument: {fileID: 0}, m_ObjectArgumentAssemblyTypeName: 'UnityEngine.Object,
+            UnityEngine', m_IntArgument: 0, m_FloatArgument: 0, m_StringArgument: sensitive, m_BoolArgument: 0}, m_CallState: 2}
 --- !u!114 &60347500
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1988,6 +1990,54 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 234684649}
   m_CullTransparentMesh: 1
+--- !u!1 &253737945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 253737947}
+  - component: {fileID: 253737946}
+  m_Layer: 0
+  m_Name: checker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &253737946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253737945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4979f7f899f320c408dd9922a41e3e03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DiscrepancyChecker
+  mainEmail: {fileID: 1919533910}
+  spellingKey: 112
+  grammarKey: 103
+  phishingKey: 108
+--- !u!4 &253737947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253737945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 972.00684, y: 512.7497, z: 34.3302}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &264340671 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4419831185660848557, guid: eecbc1020dc7a48c0b6a18894709a716, type: 3}
@@ -12552,8 +12602,7 @@ MonoBehaviour:
     _________
 
 
-    Total Points:
-    0'
+    Total Points: 0'
 --- !u!222 &2025135955
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -13480,3 +13529,4 @@ SceneRoots:
   - {fileID: 1921804760}
   - {fileID: 1113275744}
   - {fileID: 725686686}
+  - {fileID: 253737947}
