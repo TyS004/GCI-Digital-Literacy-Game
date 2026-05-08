@@ -1,24 +1,24 @@
-Profile: 
-From: 
-Subject: 
-Body: 
+Profile: oldMan
+From: peter@chapman.edu 
+Subject: ENG 101
+Body: Hello, unfortunately class will have to be cancelled today and I am very sorry. I got into a car crash on my way to school this morning. I will be able to post the homework later for this class today. Have a great day and I will see you Tuesday.
+
+Profile: baldMan
+From: fortniteguy@gmail.com
+Subject: V-Bucks Giveaway
+Body: Congratulations you have just won 10,000 V-Bucks. If you don’t claim it in 24 hours you will not get it. The only thing you need to do to get 10,000 V-Bucks is to give us your account <d type="sensitive information">name and password</d> so we can give it to you.
+
+Profile: clippy
+From: adamsandlerfan@gmail.com
+Subject: Investment Opportunity
+Body: Hello we have a new exciting business opportunity that you may be interested in investing into. We are making a new token called Super Huge Important Token and we need investors on the ground floor. To invest you only need to send us <d type="sensitive information">$500 and your money</d> will make guaranteed returns.
 
 Profile: 
-From: 
-Subject: 
-Body: 
+From: charles.miller742@gmail.com
+Subject: Notes
+Body: Hey this is Charles, I was sick last class. Do you think you could send me a copy of your notes? Also I don't really know how to do it so it would be really great if you could help me. I just do not really want to get behind in my class. Thank you.
 
-Profile: 
-From: 
-Subject: 
-Body: 
-
-Profile: 
-From: 
-Subject: 
-Body: 
-
-Profile: 
-From: 
-Subject: 
-Body: 
+Profile: nintendo
+From: no-reply@accounts.nintendo.com
+Subject: Wish List
+Body: One or more games on your wishlist have been put on sale. These sales are only for a limited time so you have to act fast. If you want more information you can log into our website and check your wishlist.

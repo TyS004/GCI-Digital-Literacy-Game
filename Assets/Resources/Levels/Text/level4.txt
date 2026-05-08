@@ -1,24 +1,36 @@
-Profile: oldMan
-From: peter@chapman.edu 
-Subject: ENG 101
-Body: Hello, unfortunately class will have to be cancelled today and I am very sorry. I got into a car crash on my way to school this morning. I will be able to post the homework later for this class today. Have a great day and I will see you Tuesday.
+Profile: tacoBell
+From: rewards@tacobell.com
+Subject: Free Welcome Reward
+Body: Welcome to the Taco Bell rewards program<d type="grammar"> </d>Because you are part of this now you can get some discounts and free items from Taco Bell<d type="grammar"> </d>Since you just made a new account you can get a free Baja Blast, Cheesy Gordita Crunch, or a Crunchwrap Supreme<d type="grammar"> </d>This deal will expire in 12 days<d type="grammar"> </d>
 
-Profile: baldMan
-From: fortniteguy@gmail.com
-Subject: V-Bucks Giveaway
-Body: Congratulations you have just won 10,000 V-Bucks. If you don’t claim it in 24 hours you will not get it. The only thing you need to do to get 10,000 V-Bucks is to give us your account <d type="sensitive information">name and password</d> so we can give it to you.
+Profile: hp
+From: noreply@hp.com
+Subject: Order Confirmation
+Body: Thanks <d type="grammar">fpr</d> your order!
+      We received and <d type="grammar">ordr</d> for a new laptop and it should be <d type="grammar">ont</d> its way. You’ll get another email with its tracking number when it gets shipped. It is estimated to take about 2 weeks for item to be delivered to your address. 
 
-Profile: clippy
-From: adamsandlerfan@gmail.com
-Subject: Investment Opportunity
-Body: Hello we have a new exciting business opportunity that you may be interested in investing into. We are making a new token called Super Huge Important Token and we need investors on the ground floor. To invest you only need to send us <d type="sensitive information">$500 and your money</d> will make guaranteed returns.
+Profile: appleArcade
+From: applearcade@insideapple.apple.com
+Subject: 3 Months of Apple Arcade
+Body: Hello Dexter Morgan,
+      After your purchase of a new Apple product, you can get a free 3 month trial of Apple Arcade. Apple Arcade gives you access to hundreds of games for free with no advertisements. Subscription will auto-renew after 3 months for $6.99/month.
 
 Profile: 
-From: charles.miller742@gmail.com
-Subject: Notes
-Body: Hey this is Charles, I was sick last class. Do you think you could send me a copy of your notes? Also I don't really know how to do it so it would be really great if you could help me. I just do not really want to get behind in my class. Thank you.
+From: WobbleWorks@gmail.com
+Subject: WobbleWorks Job Offer
+Body: We are glad to inform you that we are offering you the position of Administrative Assistant at WobbleWorks. We believe that your skills and experience will be the perfect fit for our company. Attached to this email are the terms of your employment. Please respond with any questions that you have. We look forward to hearing your response.
 
-Profile: nintendo
-From: no-reply@accounts.nintendo.com
-Subject: Wish List
-Body: One or more games on your wishlist have been put on sale. These sales are only for a limited time so you have to act fast. If you want more information you can log into our website and check your wishlist.
+Profile: 
+From: SrLoin@gmail.com
+Subject: High Quality Meat
+Body: I would like to sell you some <d type="grammar">meet</d>. Would you like to buy some? I sell the highest quality cuts of meat, and I think you would be interested in buying some. If you want to make an order just reply to this email and give me <d type="grammar">you're</d> card information.
+
+Profile: chatGPT
+From: noreply@email.openai.com
+Subject: Privacy Policy 
+Body: We wanted you to know that we are updating our privacy policy and how your data is used and stored. If you want more information on these changes you can read our privacy policy.  This can be changed using your in app settings at any time. These changes will not affect your in app performance.
+
+Profile: jackInTheBox
+From: verify@x.com
+Subject: Login on New Device
+Body: We noticed a login on an iPhone 12 in Seattle, Washington. If this was you, then this email can be ignored. If this was not you further steps should be taken to secure your account.  Login to your account here to deactivate all other sessions. 
