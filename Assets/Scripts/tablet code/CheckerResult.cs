@@ -6,6 +6,12 @@ public class CheckerResult : MonoBehaviour
 {
     public Image ResultImage;
     public Text ResultText;
+
+    public void Reset()
+    {
+        ResultImage.color = TabletParameters.DefaultColor;
+        ResultText.text = "---";
+    }
     
     public void Detected()
     {
@@ -26,7 +32,6 @@ public class CheckerResult : MonoBehaviour
     private IEnumerator ResetAfterDelay()
     {
         yield return new WaitForSeconds(TabletParameters.DisplayDuration);
-        ResultImage.color = TabletParameters.DefaultColor;
-        ResultText.text = "---";
+        Reset();
     }
 }

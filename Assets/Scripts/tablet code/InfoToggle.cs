@@ -1,5 +1,4 @@
 using UnityEngine;
-using TMPro;
 using UnityEngine.UI;
 
 public class InfoToggle : MonoBehaviour
@@ -10,6 +9,7 @@ public class InfoToggle : MonoBehaviour
     public Sprite LeftPressed;
     public Sprite RightRegular;
     public Sprite RightPressed;
+    public DropdownManager DropdownManager;
 
     private bool isOpen = false;
 
@@ -17,12 +17,25 @@ public class InfoToggle : MonoBehaviour
     {
         SetButton();
     }
-    
+
     public void OnArrowClicked()
     {
         isOpen = !isOpen;
         infoPanel.SetActive(isOpen);
         SetButton();
+        DropdownManager.OnInfoToggled(this);
+    }
+
+    public void Close()
+    {
+        isOpen = false;
+        infoPanel.SetActive(false);
+        SetButton();
+    }
+
+    public bool IsOpen()
+    {
+        return isOpen;
     }
 
     private void SetButton()
