@@ -19,7 +19,10 @@ public class RecapMainEmail : MonoBehaviour
         OriginalText = EmailText.text;
         SenderImage.sprite = email.GetProfileImageSprite();
         Discrepancies = email.GetDiscrepancies();
-        StartCoroutine(HighlightAfterUpdate());
+    
+        Canvas.ForceUpdateCanvases();
+        EmailText.ForceMeshUpdate();
+        HighlightDiscrepancies();
     }
 
     private IEnumerator HighlightAfterUpdate()

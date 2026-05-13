@@ -12,7 +12,7 @@ Body: Your package has been delivered. It has been left near a front door or por
 Profile: <d type="profile">oldRoblox</d>
 From: no-reply@roblox.com
 Subject: Account Deactivated by Roblox Support
-Body:Hello, unfortunately your Roblox account davidbazuckifan2019 has been banned due to a violation of Roblox terms of service. Your account will be terminated in 5 days, and all your account items will be removed. If you believe your account is being wrongfully terminated you may make an appeal by clicking this link here and stating why you believe you are being wrongfully terminated. Click Here
+Body: Hello, unfortunately your Roblox account davidbazuckifan2019 has been banned due to a violation of Roblox terms of service. Your account will be terminated in 5 days, and all your account items will be removed. If you believe your account is being wrongfully terminated you may make an appeal by clicking this link here and stating why you believe you are being wrongfully terminated. Click Here
 
 Profile: defaultGoogle
 From: no-reply@accounts.google.com

@@ -3,16 +3,10 @@ using UnityEngine.EventSystems;
 
 public class DraggableUI : MonoBehaviour, IBeginDragHandler, IDragHandler
 {
-    private RectTransform rectTransform;
-    private Canvas canvas;
+    public RectTransform rectTransform;
+    public Canvas canvas;
     private Vector2 offset;
-
-    private void Awake()
-    {
-        rectTransform = GetComponent<RectTransform>();
-        canvas = GetComponentInParent<Canvas>();
-    }
-
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
         // Bring this object to front if needed

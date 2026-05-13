@@ -7,6 +7,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text EmailText;
     public Image SenderImage;
+    public CheckerResult CheckerResult;
     
     private string OriginalText;
     private int HighlightedWordIndex = -1;
@@ -55,16 +56,16 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         {
             if (profileSelected && d.GetDiscrepancyType() == "profile" && type == "profile")
             {
-                print("Discrepancy detected");
+                CheckerResult.NotDetected();
                 return;
             }
             if (d.GetDiscrepancyString() == HighlightedWord && type == d.GetDiscrepancyType())
             {
-                print("Discrepancy detected");
+                CheckerResult.Detected();
                 return;
             }
         }
-        print("Discrepancy not detected");
+        CheckerResult.NotDetected();
     }
 
     private void OnProfileImageClicked()
