@@ -7,6 +7,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
 {
     public TMP_Text EmailText;
     public Image SenderImage;
+    public GameObject ProfileOutline;
     public CheckerResult CheckerResult;
     
     private string OriginalText;
@@ -23,6 +24,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     
         ProfileImageButton = SenderImage.GetComponent<Button>();
         ProfileImageButton.onClick.AddListener(OnProfileImageClicked);
+        ProfileOutline.SetActive(false);
     }
     
     public void ChangeMainEmail(Email email)
@@ -30,6 +32,10 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         EmailText.text = email.GetFullText();
         OriginalText = EmailText.text;
         HighlightedWordIndex = -1;
+        HighlightedWord = "";
+        profileSelected = false;
+        SenderImage.color = Color.white;
+        ProfileOutline.SetActive(false);
         SenderImage.sprite = email.GetProfileImageSprite();
         Discrepancies = email.GetDiscrepancies();
     }
@@ -41,6 +47,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         {
             profileSelected = false;
             SenderImage.color = Color.white;
+            ProfileOutline.SetActive(false);
             ToggleWord(wordIndex);
         }
     }
@@ -56,7 +63,7 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
         {
             if (profileSelected && d.GetDiscrepancyType() == "profile" && type == "profile")
             {
-                CheckerResult.NotDetected();
+                CheckerResult.Detected();
                 return;
             }
             if (d.GetDiscrepancyString() == HighlightedWord && type == d.GetDiscrepancyType())
@@ -71,9 +78,9 @@ public class MainEmail : MonoBehaviour, IPointerClickHandler
     private void OnProfileImageClicked()
     {
         profileSelected = !profileSelected;
-        SenderImage.color = profileSelected ? Color.lightGray : Color.white;
-    
-        // Deselect any highlighted word
+        //SenderImage.color = profileSelected ? Color.cornflowerBlue : Color.white;
+        ProfileOutline.SetActive(profileSelected);
+
         HighlightedWordIndex = -1;
         HighlightedWord = "";
         UpdateHighlightedText();

@@ -12,6 +12,7 @@ public class RecapEmailManager : MonoBehaviour
     public List<Text> InboxTexts;
     public List<Image> InboxImages;
     public List<Button> InboxButtons;
+    public List<Button> InboxButtonImages;
     
     private List<Email> Inbox;
     private List<int> CorrectIndices;
@@ -52,38 +53,32 @@ public class RecapEmailManager : MonoBehaviour
                 InboxTexts[i].text = inbox[i].GetFrom() + "\n" + inbox[i].GetSubject();
                 InboxImages[i].sprite = inbox[i].GetProfileImageSprite();
                 InboxButtons[i].interactable = true;
-                
-                SetButtonColor(InboxButtons[i], CorrectIndices.Contains(i));
+            
+                SetImageColor(InboxButtonImages[i].image, CorrectIndices.Contains(i));
             }
             else
             {
                 InboxTexts[i].text = "";
                 InboxImages[i].sprite = null;
+                InboxButtonImages[i].image.color = Color.white;
             }
         }
     }
     
-    private void SetButtonColor(Button button, bool isCorrect)
+    private void SetImageColor(Image image, bool isCorrect)
     {
-        ColorBlock colors = button.colors;
-        colors.normalColor = isCorrect ? EmailParameters.CorrectEmailNormalColor : EmailParameters.IncorrectEmailNormalColor;
-        colors.highlightedColor = isCorrect ? EmailParameters.CorrectEmailHighlightedColor : EmailParameters.IncorrectEmailHighlightedColor;
-        colors.pressedColor = isCorrect ? EmailParameters.CorrectEmailPressedColor : EmailParameters.IncorrectEmailPressedColor;
-        colors.selectedColor = isCorrect ? EmailParameters.CorrectEmailSelectedColor : EmailParameters.IncorrectEmailSelectedColor;
-        button.colors = colors;
+        image.color = isCorrect ? EmailParameters.CorrectEmailNormalColor : EmailParameters.IncorrectEmailNormalColor;
     }
-    
+
     private void ResetInboxStyling()
     {
         foreach (Button button in InboxButtons)
         {
             button.interactable = false;
-            ColorBlock colors = button.colors;
-            colors.normalColor = EmailParameters.DefaultEmailNormalColor;
-            colors.highlightedColor = EmailParameters.DefaultEmailHighlightedColor;
-            colors.pressedColor = EmailParameters.DefaultEmailPressedColor;
-            colors.selectedColor = EmailParameters.DefaultEmailSelectedColor;
-            button.colors = colors;
+        }
+        foreach (Button button in InboxButtonImages)
+        {
+            button.image.color = Color.white;
         }
     }
 }

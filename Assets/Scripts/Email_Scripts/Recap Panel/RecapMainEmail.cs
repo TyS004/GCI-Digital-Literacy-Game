@@ -9,6 +9,7 @@ public class RecapMainEmail : MonoBehaviour
 {
     public TMP_Text EmailText;
     public Image SenderImage;
+    public GameObject ProfileOutline;
 
     private string OriginalText;
     private List<Discrepancy> Discrepancies = new List<Discrepancy>();
@@ -19,7 +20,11 @@ public class RecapMainEmail : MonoBehaviour
         OriginalText = EmailText.text;
         SenderImage.sprite = email.GetProfileImageSprite();
         Discrepancies = email.GetDiscrepancies();
-    
+
+        bool hasProfileDiscrepancy = Discrepancies.Exists(d => d.GetDiscrepancyType() == "profile");
+        ProfileOutline.SetActive(hasProfileDiscrepancy);
+        //SenderImage.color = hasProfileDiscrepancy ? Color.gray : Color.white;
+
         Canvas.ForceUpdateCanvases();
         EmailText.ForceMeshUpdate();
         HighlightDiscrepancies();
@@ -52,6 +57,8 @@ public class RecapMainEmail : MonoBehaviour
 
             foreach (Discrepancy d in Discrepancies)
             {
+                if (d.GetDiscrepancyType() == "profile") continue;
+                
                 if (wordInfo.firstCharacterIndex == d.GetStartIndex())
                 {
                     string colorStart = $"<color={EmailParameters.DiscrepancyColor}>";

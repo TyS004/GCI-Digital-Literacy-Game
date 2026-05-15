@@ -20,15 +20,13 @@ public class LevelManager : MonoBehaviour
 
     public void LoadNextLevel()
     {
-        if (currentLevel != 0 && EmailManager.GetIncorrectAmount() > 0)
+        if (currentLevel == Levels.Count - 1)
         {
-            // end of level trigger
+            
+            return;
         }
         EmailManager.SetInbox(Levels[currentLevel].GetInbox());
         currentLevel++;
-
-
-        print("total correct: " + totalCorrect);
     }
 
     public void IncreaseTotalCorrect(int correctAmount)
