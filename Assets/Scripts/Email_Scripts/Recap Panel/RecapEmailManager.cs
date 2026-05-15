@@ -13,6 +13,7 @@ public class RecapEmailManager : MonoBehaviour
     public List<Image> InboxImages;
     public List<Button> InboxButtons;
     public List<Button> InboxButtonImages;
+    public Sprite GreySprite;
     
     private List<Email> Inbox;
     private List<int> CorrectIndices;
@@ -59,7 +60,7 @@ public class RecapEmailManager : MonoBehaviour
             else
             {
                 InboxTexts[i].text = "";
-                InboxImages[i].sprite = null;
+                InboxImages[i].sprite = GreySprite;
                 InboxButtonImages[i].image.color = Color.white;
             }
         }

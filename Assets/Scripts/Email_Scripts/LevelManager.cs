@@ -1,12 +1,15 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
     public FileReader FileReader;
     public EmailManager EmailManager;
-    private List<Level> Levels;
+    public Canvas GameOverCanvas;
+    public Text GameOverStatsText;
     
+    private List<Level> Levels;
     private int currentLevel;
     private int totalCorrect;
     private int totalIncorrect;
@@ -16,13 +19,15 @@ public class LevelManager : MonoBehaviour
         Levels = FileReader.Load();
         currentLevel = 0;
         LoadNextLevel();
+        GameOverCanvas.enabled = false;
     }
 
     public void LoadNextLevel()
     {
-        if (currentLevel == Levels.Count - 1)
+        if (currentLevel == Levels.Count)
         {
-            
+            GameOverCanvas.enabled = true;
+            GameOverStatsText.text = $"Total Correct: {totalCorrect}\nTotal Incorrect: {totalIncorrect}";
             return;
         }
         EmailManager.SetInbox(Levels[currentLevel].GetInbox());

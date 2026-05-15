@@ -9,9 +9,11 @@ public class EmailManager : MonoBehaviour
     public LevelManager LevelManager;
     public RecapPanelManager RecapPanelManager;
     public MainEmail MainEmail;
+    public TabletManager TabletManager;
     public List<Text> InboxTexts;
     public List<Image> InboxImages;
     public List<Button> InboxButtons;
+    public Sprite GreySprite;
     
     private List<Email> Inbox;
     private List<Email> OriginalInbox;
@@ -54,12 +56,10 @@ public class EmailManager : MonoBehaviour
         {
             correctAmount++;
             CorrectIndices.Add(GetOriginalEmailIndex());
-            print("correct");
         }
         else
         {
             incorrectAmount++;
-            print("incorrect");
         }
         
         Inbox.RemoveAt(currentIndex);
@@ -71,6 +71,7 @@ public class EmailManager : MonoBehaviour
             LevelManager.IncreaseTotalCorrect(correctAmount);
             LevelManager.IncreaseTotalIncorrect(incorrectAmount);
             RecapPanelManager.Show();
+            TabletManager.CloseTablet();
             return;
         }
 
@@ -127,7 +128,7 @@ public class EmailManager : MonoBehaviour
             else
             {
                 InboxTexts[i].text = "";
-                InboxImages[i].sprite = null;
+                InboxImages[i].sprite = GreySprite;
                 InboxButtons[i].interactable = false;
             }
         }

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class WindowManager : MonoBehaviour
+public class TabletManager : MonoBehaviour
 {
     public GameObject TabletWindow;
     public GameObject TabletTask;
