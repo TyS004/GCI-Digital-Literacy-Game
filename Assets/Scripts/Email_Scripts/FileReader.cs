@@ -18,31 +18,25 @@ public class FileReader : MonoBehaviour
     public List<Level> Load()
     {
         List<Level> levels = new List<Level>();
-
-        if (!Directory.Exists(levelsFolderPath))
-        {
-            print("Levels folder not found: " + levelsFolderPath);
-            return levels;
-        }
-
-        string[] levelFiles = Directory.GetFiles(levelsFolderPath, "level*.txt");
-        System.Array.Sort(levelFiles);
+    
+        TextAsset[] levelFiles = Resources.LoadAll<TextAsset>("Levels/Text");
+        System.Array.Sort(levelFiles, (a, b) => string.Compare(a.name, b.name));
 
         for (int i = 0; i < levelFiles.Length; i++)
         {
-            List<Email> emails = ReadEmailsAndImagesFromFile(levelFiles[i]);
+            List<Email> emails = ReadEmailsAndImagesFromFile(levelFiles[i].text);
             levels.Add(new Level(i + 1, emails));
         }
 
         return levels;
     }
     
-    private List<Email> ReadEmailsAndImagesFromFile(string filePath)
-{
-    List<Email> emails = new List<Email>();
+    private List<Email> ReadEmailsAndImagesFromFile(string fileText)
+    {
+        List<Email> emails = new List<Email>();
 
-    string[] emailBlocks = File.ReadAllText(filePath)
-        .Split(new string[] { "\r\n\r\n", "\n\n" }, System.StringSplitOptions.RemoveEmptyEntries);
+        string[] emailBlocks = fileText  // use fileText directly, not File.ReadAllText
+            .Split(new string[] { "\r\n\r\n", "\n\n" }, System.StringSplitOptions.RemoveEmptyEntries);
 
     foreach (string block in emailBlocks)
     {
