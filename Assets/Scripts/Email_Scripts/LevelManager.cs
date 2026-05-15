@@ -17,6 +17,13 @@ public class LevelManager : MonoBehaviour
     public void Start()
     {
         Levels = FileReader.Load();
+        Reset();
+    }
+    
+    public void Reset()
+    {
+        totalCorrect = 0;
+        totalIncorrect = 0;
         currentLevel = 0;
         LoadNextLevel();
         GameOverCanvas.enabled = false;

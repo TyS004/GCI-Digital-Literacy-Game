@@ -8,11 +8,21 @@ public class MainMenuScript : MonoBehaviour
 
     public void Start()
     {
+        Show();
+    }
+
+    public void OnStartClick()
+    {
+        Hide();
+    }
+
+    public void Show()
+    {
         mainMenuPanel.SetActive(true);
         EmailPanel.SetActive(false);
     }
 
-    public void OnStartClick()
+    public void Hide()
     {
         mainMenuPanel.SetActive(false);
         EmailPanel.SetActive(true);
