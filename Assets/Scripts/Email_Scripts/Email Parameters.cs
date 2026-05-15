@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public static class EmailParameters
 {
-    public static string HighlightedWordColor = "#50cc3f";
+    public static string HighlightedWordColor = "#377294";
     public static string DiscrepancyColor =  "#c22121";
 
     public static Color CorrectEmailNormalColor = GetColor("#cbdbbd");
