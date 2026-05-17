@@ -11033,7 +11033,6 @@ MonoBehaviour:
   RecapPanelManager: {fileID: 415429750}
   MainMenuScript: {fileID: 1962242179}
   TabletManager: {fileID: 305690916}
-  Slider: {fileID: 2078029367}
 --- !u!1001 &1644774224
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14767,7 +14766,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14775,7 +14774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_AnchorMin.y
@@ -14783,7 +14782,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1920
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5514851739605697091, guid: c1f4eef2be7f745d19547f0f6824da2d, type: 3}
       propertyPath: m_SizeDelta.y
