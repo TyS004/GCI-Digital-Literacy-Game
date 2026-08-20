@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -6,11 +7,21 @@ public class Slider : MonoBehaviour
 {
     public GameObject sliderPrefab;
     public EmailManager EmailManager;
+    public Camera cam;
 
-    public int SliderAnimationDistance;
+    public Vector3 SliderAnimationDistance;
 
     private bool isShown = false;
     private bool isMoving = false;
+    private float StartPoint;
+    private float EndPoint;
+
+    private void Start()
+    {
+        StartPoint = cam.WorldToScreenPoint(new Vector3(0, 0, 90)).x;
+        EndPoint = cam.WorldToScreenPoint(new Vector3(-36, 0, 90)).x;
+        
+    }
 
     public void Accept()
     {
@@ -30,18 +41,19 @@ public class Slider : MonoBehaviour
 
     IEnumerator MoveSlider()
     {
+        
         isMoving = true;
         float distance;
-
+        
         if (isShown)
         {
             isShown = false;
-            distance = -SliderAnimationDistance;
+            distance = EndPoint - StartPoint;
         }
         else
         {
             isShown = true;
-            distance = SliderAnimationDistance;
+            distance = (EndPoint - StartPoint) *-1;
         }
 
         float elapsed = 0f;

@@ -14120,7 +14120,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sliderPrefab: {fileID: 2078029362}
   EmailManager: {fileID: 1276827523}
-  SliderAnimationDistance: 560
+  cam: {fileID: 330585545}
+  SliderAnimationDistance: {x: 0, y: 0, z: 0}
 --- !u!95 &2078029368
 Animator:
   serializedVersion: 7
